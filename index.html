@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharehood</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Exo 2', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f9f9f9, #e8f5e9);
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+        header nav a:hover {
+            color: #dff3d8;
+        }
+        .location-select {
+            background-color: white;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+        .location-select:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .profile-button {
+            background-color: white;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .profile-button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .search-bar {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 600px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+            outline: none;
+        }
+        .search-bar button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .search-bar button:hover {
+            background-color: #45a049;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .tab:hover {
+            color: #4CAF50;
+        }
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 3px;
+            background-color: #4CAF50;
+            border-radius: 10px;
+        }
+        .item-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .item-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            width: calc(33.33% - 20px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .item-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .item-card h3 {
+            font-size: 18px;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        .item-card p {
+            font-size: 14px;
+            color: #555;
+        }
+        .item-card button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .item-card button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        /* Profile Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            background-color: #d32f2f;
+        }
+        .user-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sharehood</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <select class="location-select">
+                <option value="dang">Tulsipur</option>
+                <option value="kathmandu">Kathmandu</option>
+                <option value="pokhara">Pokhara</option>
+            </select>
+            <button class="profile-button" onclick="openModal()">Profile</button>
+        </nav>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search for items...">
+        <button>Search</button>
+    </div>
+
+    <div class="container">
+        <h2>Featured Items</h2>
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab(event, 'lend')">Lend</div>
+            <div class="tab" onclick="switchTab(event, 'borrow')">Borrow</div>
+        </div>
+        <div id="lend" class="item-list">
+            <!-- Example Lend Cards -->
+            <div class="item-card">
+                <img src="https://via.placeholder.com/200" alt="Item">
+                <h3>Power Drill</h3>
+                <p>High-quality power drill for construction projects.</p>
+                <button>Request to Borrow</button>
+            </div>
+            <div class="item-card">
+                <img src="https://via.placeholder.com/200" alt="Item">
+                <h3>Lawn Mower</h3>
+                <p>Efficient lawn mower for garden maintenance.</p>
+                <button>Request to Borrow</button>
+            </div>
+        </div>
+        <div id="borrow" class="item-list" style="display:none;">
+            <!-- Example Borrow Cards -->
+            <div class="item-card">
+                <img src="https://via.placeholder.com/200" alt="Item">
+                <h3>Tent</h3>
+                <p>Camping tent for outdoor adventures.</p>
+                <button>Lend It</button>
+            </div>
+            <div class="item-card">
+                <img src="https://via.placeholder.com/200" alt="Item">
+                <h3>Camera</h3>
+                <p>Professional camera for photography projects.</p>
+                <button>Lend It</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Sharehood. All rights reserved.</p>
+    </footer>
+
+    <!-- Profile Modal -->
+    <div class="modal" id="profileModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <h2>Your Profile</h2>
+            <div class="user-info">
+                <p><strong>Name:</strong> Shreekrisha Kharel</p>
+                <p><strong>Location:</strong> Tulsipur, Dang</p>
+                <p><strong>Email:</strong> example@email.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(event, tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            const itemLists = document.querySelectorAll('.item-list');
+            itemLists.forEach(list => {
+                list.style.display = 'none';
+            });
+
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabName).style.display = 'flex';
+        }
+
+        function openModal() {
+            document.getElementById('profileModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('profileModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
