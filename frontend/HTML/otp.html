@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="../CSS/otppage.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-box otp">
+            <h2>OTP Verification</h2>
+            <form action="#">
+                  <div class="otp-container">
+                    <input type="text" class="otp-input" maxlength="1" required>
+                    <input type="text" class="otp-input" maxlength="1" required>
+                    <input type="text" class="otp-input" maxlength="1" required>
+                    <input type="text" class="otp-input" maxlength="1" required>
+                    <input type="text" class="otp-input" maxlength="1" required>
+                    <input type="text" class="otp-input" maxlength="1" required>
+                </div>
+                <button type="submit" class="btn">Verify OTP</button>
+                <div class="resend-otp">
+                    <p>Didn't receive the OTP?
+                        <a href="#" id="resend-otp-link">Resend OTP</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../JS/otp.js"></script> <!-- Link to your JS file -->
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Item</title>
+    <link rel="stylesheet" href="../CSS/styleshare.css">
+</head>
+
+<body class="padd">
+    <div class="container">
+        <!-- Form container -->
+        <div class="form-container">
+            <!-- Close Button inside the form container -->
+            <button class="close" onclick="window.location.href='index.html'">&times;</button>
+
+            <h2>Upload an Item</h2>
+
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Enter the title of the item" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="tools">Tools</option>
+                    <option value="vehicles">Vehicles</option>
+                    <option value="books">Books</option>
+                    <option value="camping">Camping</option>
+                    <option value="music">Music</option>
+                    <option value="camera">Camera</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="services">Services</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" placeholder="Describe the item" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="condition">Condition:</label>
+                <select id="condition" name="condition" required>
+                    <option value="new">New</option>
+                    <option value="like-new">Like New</option>
+                    <option value="used">Used</option>
+                    <option value="damaged">Damaged</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image URL:</label>
+                <input type="url" id="image" name="image" placeholder="Image URL" required>
+            </div>
+
+            <!-- Map container placed before the upload item button -->
+            <div class="map-container">
+                <!-- Embedding a simple map (using OpenStreetMap iframe) -->
+                <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-0.5,51.28,0.5,51.32&amp;layer=mapnik"
+                    style="border: 1px solid black;"></iframe>
+            </div>
+
+            <button class="submit" type="submit">Upload Item</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
