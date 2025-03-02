@@ -14,7 +14,7 @@
         <div class="form-box otp">
             <h2>OTP Verification</h2>
             <form action="#">
-                  <div class="otp-container">
+                <div class="otp-container">
                     <input type="text" class="otp-input" maxlength="1" required>
                     <input type="text" class="otp-input" maxlength="1" required>
                     <input type="text" class="otp-input" maxlength="1" required>
@@ -22,7 +22,7 @@
                     <input type="text" class="otp-input" maxlength="1" required>
                     <input type="text" class="otp-input" maxlength="1" required>
                 </div>
-                <button type="submit" class="btn">Verify OTP</button>
+                <button type="button" class="btn" id="verify-otp">Verify OTP</button> <!-- ✅ Added ID -->
                 <div class="resend-otp">
                     <p>Didn't receive the OTP?
                         <a href="#" id="resend-otp-link">Resend OTP</a>
@@ -31,6 +31,6 @@
             </form>
         </div>
     </div>
-    <script src="../JS/otp.js"></script> <!-- Link to your JS file -->
+    <script src="../JS/otp.js"></script> <!-- Ensure this script is at the bottom -->
 </body>
 </html>

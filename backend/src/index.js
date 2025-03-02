@@ -5,6 +5,7 @@ import cors from "cors";
 import path from "path";
 
 import { connectDB } from "./lib/db.js";
+import { scheduledTasks } from "./lib/scheduledTasks.js";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import productRoutes from "./routes/product.route.js";
@@ -47,4 +48,7 @@ if (process.env.NODE_ENV === "production") {
 server.listen(PORT, () => {
   console.log("Server is running on PORT:" + PORT);
   connectDB();
+
+  // Schedule a task to run every minute
+  scheduledTasks();
 });

@@ -60,6 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData(registerForm);
     const data = Object.fromEntries(formData.entries());
 
+    console.log("Form Data:", data); // ✅ Debugging
+
     try {
       const response = await fetch('http://localhost:5000/api/auth/signup', {
         method: 'POST',
@@ -74,9 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const result = await response.json();
-      localStorage.setItem('token', result.token); // Save token
-
-      window.location.href = '/frontend/HTML/homepage.html';
+      localStorage.setItem('email', data.email);
+      window.location.href = '/frontend/HTML/otp.html';
     } catch (error) {
       console.error('Registration error:', error);
       alert(error.message || 'Registration failed');
