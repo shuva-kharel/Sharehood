@@ -85,7 +85,7 @@ Since the frontend is now using plain HTML, CSS, and JS, you can simply open the
 
 Once the backend server is running:
 
-- Frontend: Open the HTML files directly in your browser (e.g., `frontend/HTML/homepage.html`)
+- Frontend: Open the HTML files with Live Server
 - Backend: Runs on [http://localhost:5000](http://localhost:5000)
 
 ---
