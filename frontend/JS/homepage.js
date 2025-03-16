@@ -17,6 +17,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       throw new Error('Unauthorized');
     }
 
+    const userData = await response.json();
+    console.log('Fetched User Data:', userData);
+    console.log('Fetched User Data:', userData.name);
+    console.log('Fetched User Data:', userData.email);
+
+
+    document.getElementById('userName').textContent = userData.name;
+
     console.log('User is logged in');
   } catch (error) {
     console.error('Auth check failed:', error);
