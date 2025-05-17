@@ -105,4 +105,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🧑‍💻 Authors
 
-- **Your Name** - [Shuva Kharel](https://github.com/shuva-kharel)
+- [Shuva Kharel](https://github.com/shuva-kharel)
